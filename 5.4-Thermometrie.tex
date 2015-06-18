@@ -149,13 +149,42 @@ In diesem Versuch geht es um Temperaturmessung im Bereich von etwa 1 bis 5 K. Di
 
 \section{Paramagnetismus}
 
+%Herleitung Curie ideal:
+Wir betrachten einen idealen Paramagneten mit N magnetischen Momenten. Diese sind gegeben durch $\vec{\mu} = -g_j \mu_B \vec{J}$, wobei $g_J$ der gyromagnetische Faktor ist, $\mu_B$ das Bohrsche Magneton und $\vec{J}$ der Gesamtdrehimpuls. Im äußeren Magnetfeld gibt es nur zwei Zustände, und zwar die parallele oder die antiparallele Ausrichtung der magnetischen Momente. Deren Energie ist
+$$E_{\pm} = \mp \vec{\mu} \cdot \vec{B} = \pm g_j \mu_B \vec{J} \cdot \vec{B}.$$
+Die Boltzmann-Statistik liefert uns die Besetzungszahlen der Zustände als $N_{\pm} = N \frac{e^{\pm z}}{e^z + e^{-z}}$, wobei hier $\frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T} =: z$ substituiert wurde. Die gesamte Magnetisierung des Paramagneten ist dann gegeben durch 
+$$M = |\vec{\mu}| (N_+ - N_-) = N |\vec{\mu}| \frac{e^z - e^{-z}}{e^z + e^{-z}} = N |\vec{\mu}| tanh(z) ,$$ was sich für $z \ll 1$ nähern lässt zu $tanh(z) \approx z$ und somit 
+$$M = N |\vec{\mu}| \frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T}.$$
+Die magnetische Suszeptibilität ist definiert als $\chi = \frac{\partial M}{\partial B}$, wodurch sich nach Anwendung auf unseren Ausdruck für $M$ gerade $\chi = \frac{C}{T}$ mit einer Konstanten $C$ ergibt. Dies ist das Curie-Gesetz und $C$ ist die Curie-Konstante.
+
 \section{Eigenschaften von $^3$He und $^4$He}
 
-\chapter{Durchführung}
+\chapter{Aufbau und Durchführung}
+
+Der verwendete Badkryostat besteht aus einem äußeren Dewargefäß, welches zur Vorkühlung und Isolation mit flüssigem Stickstoff befüllt wird, sowie aus einem innerem Dewargefäß, dessen Zwischenraum mit einer Turbomolekularpumpe evakuiert wird und welches mit flüssigem Helium befüllt wird. Im Probenraum des Badkryostaten befindet sich die von flüssigem Helium umgebene paramagnetische Probe in einem Spulensystem gemäß folgender Skizze: 
+
+\begin{figure}[h] 
+  \centering
+     \includegraphics[width=0.7\textwidth]{data/Aufbau.jpg}
+  \caption{Aufbau zur Messung der magnetischen Suszeptibilität.}
+  \label{fig:Bild1}
+\end{figure}
+
+An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdme befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
+
+$$U_{total}(T) = U_{leer} + U_{Probe}(T)$$
+
+Sie ist proportional zur magnetischen Suszeptibilität der Probe. In einem Lock-In-Verstärker wird die Spannung $U_{total}(T)$ mittels der Referenzspannung moduliert, was in einer Gleichspannung resultiert, die wir messen. Später erfolgt eine Temperatur-Kalibration. Im oberen Teil des heliumgefüllten Dewargefäßes ist außerdem ein Druckmessgerät angeschlossen.
+
+Zuerst muss der Kryostat befüllt werden. Nachdem das äußere Dewargefäß mit flüssigem Stickstoff befüllt worden ist, kann Helium in den Probenraum übergehoben werden. Da wir nach dem Prinzip der Verdampfungskühlung arbeiten, muss im Folgenden Helium aus dem inneren Dewargefäß in die Helium-Rückleitung abgepumpt werden, um hinreichend tiefe Temperaturen zu erreichen. Dazu steht uns eine Drehschieber-Vakuumpumpe zur Verfügung, deren Saugleistung über ein grobes und ein feines Regelventil gedrosselt werden kann. 
 
 \section{Aufnahme der Abkühlkurve}
 
+Zunächst nehmen wir die Spannungswerte für den Abkühlvorgang auf. Dazu öffnen wir schrittweise die Regelventile der Vakuumpumpe und senken damit den Druck und somit die Temperatur. Durch gleichzeitiges Ablesen der Spannung nehmen wir 20 Wertepaare zwischen 744 Torr und 4 Torr auf, was Temperaturen zwischen 4,2 K und 1,5 K entspricht.
+
 \section{Aufnahme der Aufwärmkurve}
+
+Anschließend werden die Regelventile geschlossen und die Drehschieberpumpe abgestellt. Durch die Erwärmung des Heliums erfolgt ein Druckanstieg, wobei wir wieder die Spannung ablesen und auf diese Weise 31 Wertepaare von 4 Torr bis 220 Torr aufnehmen.
 
 \chapter{Auswertung}
 
