@@ -166,9 +166,10 @@ Der verwendete Badkryostat besteht aus einem äußeren Dewargefäß, welches zur
 \begin{figure}[h] 
   \centering
      \includegraphics[width=0.7\textwidth]{data/Aufbau.jpg}
-  \caption{Aufbau zur Messung der magnetischen Suszeptibilität.}
+  \caption{Aufbau zur Messung der magnetischen Suszeptibilität. \cite{anleitung}}  
   \label{fig:Bild1}
 \end{figure}
+
 
 An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdme befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
 
@@ -190,6 +191,21 @@ Anschließend werden die Regelventile geschlossen und die Drehschieberpumpe abge
 
 \section{Druckkorrektur}
 
+Da der Druck nicht direkt am Probenort gemessen wird, sondern an der Oberfläche des Heliumbehälters, muss die Druckdifferenz betrachtet werden, die durch das Gewicht der Heliumsäule oberhalb der Probe entsteht. Der Druck am Probenort berechnet sich wie folgt: 
+$$p_{Probe} = p_{oben} + p_{He} = p_{oben} + \rho_{He} h g$$
+mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145 ~ \frac{g}{cm^3}$. Da am Kryostaten eine Skala angebracht ist, deren Nullpunkt am Probenort liegt, kann die Höhe direkt abgelesen werden. Beim Abkühlvorgang wurde die Höhe dreimal abgelesen und zweimal (zu Beginn und zum Ende) beim Aufwärmen. In folgender Tabelle sind die gemessenen Füllhöhen sowie die Korrekturwerte inkl. der sich dadurch ergebenden Temperaturkorrekturen aufgelistet:
+
+\begin{center}
+  \begin{tabular}{|p{1.6cm}|p{2.4cm}|p{1.6cm}|p{2cm}|p{2.4cm}|p{2cm}|p{2cm}|}
+    \hline
+    T in K & $p_{oben}$ in Torr & h in cm & $\Delta p$ in Torr & $p_{Probe}$ in Torr & $\Delta T$ in K & $T_{Probe}$ in K \\ \hline
+    4,2 & 744 & 22,2 & 2,369 & 746,369 &  &   \\ \hline
+    2,27 & 47 & 13,5 & 1,440 & 48,440 &  &    \\ \hline
+    1,5 & 4 & 10,8 & 1,152 & 5,152 &  &    \\ \hline
+     & 220 & 10,6 & 1,131 & 221,131 &  &    \\ \hline
+	\end{tabular}
+\end{center}
+
 \section{Überprüfung des Curie- und Curie-Weiss-Gesetzes}
 
 \section{Verlauf der Aufwärmung}
@@ -203,7 +219,7 @@ Anschließend werden die Regelventile geschlossen und die Drehschieberpumpe abge
 % Eintrag fürs Inhaltsverzeichnis
 \newpage
 \begin{thebibliography}{100}
-  \bibitem{anleitung} Versuchsanleitung zum Versuch Holographie, heruntergeladen am 09.05.2015 von der Homepage des IAP der TU Darmstadt
+  \bibitem{anleitung} Versuchsanleitung zum Versuch Tieftemperaturmessung, heruntergeladen am 09.06.2015 von der Homepage der TU Darmstadt
   \bibitem{blackbodycoherence} The coherence length of black-body
 radiation by Axel Donges, 1998: \url{http://hank.uoregon.edu/teaching-modules/Broadband-Interferometer/BBcoherence.pdf}
   \bibitem{boltzmann} Abteilung theoretische Chemie der Goethe-Universität
