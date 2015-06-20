@@ -109,11 +109,11 @@
 }
 %BEGINN TITELSEITE
 
-\title{Tieftemperatur Messung an Suprafluidem Helium}
+\title{Tieftemperaturmessung an suprafluidem Helium}
 
-\subtitle{Esra Bauer (1906093) \\Sören Link {1582378}}
+\subtitle{Esra Bauer \\Sören Link}
 
-\subsubtitle{Betreuer:Michael Lannert \hfill Versuchsdatum: 1. Juni 2015}
+\subsubtitle{Betreuer: M.Sc. Michael Lannert \hfill Versuchsdatum: 1. Juni 2015}
 
 \author{Esra Bauer, Sören Link}
 
@@ -139,66 +139,91 @@
 
 \chapter{Einleitung}
 
+In diesem Versuch geht es um Temperaturmessung im Bereich von etwa 1 bis 5 K. Diese Temperaturen erzeugen wir in einem mit flüssigem Helium gefüllten Badkryostaten. Die Messung erfolgt mittels eines sekundären Thermometers in Form einer paramagnetischen Substanz, die zunächst mittels bekannter Messpunkte kalibriert werden muss. Damit können wir schließlich den sog. $\lambda$-Punkt von Helium bestimmen, unterhalb dessen die Suprafluidität eintritt, d.h. das flüssige Helium verliert seine Viskosität und verändert seine Eigenschaften bezüglich Wärmeleitfähigkeit und Wärmekapazität, was auch im Folgenden betrachtet wird.
+
 \chapter{Grundlagen}
 
-\section{Primäre und sekundäre Thermometer}
+\section{Kühlverfahren zum Erreichen der Suprafluidität}
 
-\section{Kühlverfahren zum Erreichen tiefer Temperaturen}
+\section{Thermometrie bei tiefen Temperaturen}
 
-\section{Der $\lambda$-Punkt}
+\section{Paramagnetismus}
 
-\section{Curie- und Curie-Weiss-Gesetz}
+%Herleitung Curie ideal:
+Wir betrachten einen idealen Paramagneten mit N magnetischen Momenten. Diese sind gegeben durch $\vec{\mu} = -g_j \mu_B \vec{J}$, wobei $g_J$ der gyromagnetische Faktor ist, $\mu_B$ das Bohrsche Magneton und $\vec{J}$ der Gesamtdrehimpuls. Im äußeren Magnetfeld gibt es nur zwei Zustände, und zwar die parallele oder die antiparallele Ausrichtung der magnetischen Momente. Deren Energie ist
+$$E_{\pm} = \mp \vec{\mu} \cdot \vec{B} = \pm g_j \mu_B \vec{J} \cdot \vec{B}.$$
+Die Boltzmann-Statistik liefert uns die Besetzungszahlen der Zustände als $N_{\pm} = N \frac{e^{\pm z}}{e^z + e^{-z}}$, wobei hier $\frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T} =: z$ substituiert wurde. Die gesamte Magnetisierung des Paramagneten ist dann gegeben durch 
+$$M = |\vec{\mu}| (N_+ - N_-) = N |\vec{\mu}| \frac{e^z - e^{-z}}{e^z + e^{-z}} = N |\vec{\mu}| tanh(z) ,$$ was sich für $z \ll 1$ nähern lässt zu $tanh(z) \approx z$ und somit 
+$$M = N |\vec{\mu}| \frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T}.$$
+Die magnetische Suszeptibilität ist definiert als $\chi = \frac{\partial M}{\partial B}$, wodurch sich nach Anwendung auf unseren Ausdruck für $M$ gerade $\chi = \frac{C}{T}$ mit einer Konstanten $C$ ergibt. Dies ist das Curie-Gesetz und $C$ ist die Curie-Konstante.
 
-\subsection{Herleitung des Curie-Gesetzes}
+\section{Eigenschaften von $^3$He und $^4$He}
 
-\begin{align*}
-E(x,y) &= t \cdot U^*(x,y) U(x,y) \\
-       &= t \cdot \left( |A_0|^2 + |A_1(x,y)|^2 + A_0 A_1(x,y) e^{-i \phi (x,y) -ax} + A_0 A_1(x,y) e^{i \phi (x,y) -ax} \right) \\
-       &= t \cdot \left( |A_0|^2 + |A_1(x,y)|^2 + A_0 A_1(x,y) cos(\phi (x,y) -ax) \right)
-\end{align*}
+\chapter{Aufbau und Durchführung}
 
-\chapter{Versuchsaufbau}
+Der verwendete Badkryostat besteht aus einem äußeren Dewargefäß, welches zur Vorkühlung und Isolation mit flüssigem Stickstoff befüllt wird, sowie aus einem innerem Dewargefäß, dessen Zwischenraum mit einer Turbomolekularpumpe evakuiert wird und welches mit flüssigem Helium befüllt wird. Im Probenraum des Badkryostaten befindet sich die von flüssigem Helium umgebene paramagnetische Probe in einem Spulensystem gemäß folgender Skizze: 
 
-\chapter{Versuchsdurchführung und Auswertung}
-
-\section{Temperatur am Probenort}
-
-\section{Eichung des sekundären Thermometers}
-
-\begin{figure}[H]
-\begin{tikzpicture}
-\begin{axis}[
-  default,
-  title={Überprüfung des Abbildungsgesetzes},
-  xlabel=$Z_C$ in $cm$,
-  ylabel=$Z_B$ in $cm$,
-  xmin=8,
-  xmax=32,
-  ymin=6,
-  height=0.4\linewidth,
-]
-\addplot[teal, thick, mark=x, mark size=0pt, samples=20, domain=-0:35] {(1/35+1/x)^(-1)};
-\addlegendentry{Theoretischer Verlauf}
-\end{axis}
-\end{tikzpicture}
-    \caption{Gemessene Werte für die Bildweite sowie der theoretische
-      Verlauf. Die Theorie deckt sich hier sehr gut mit den
-      aufgenommenen Daten.}
+\begin{figure}[h] 
+  \centering
+     \includegraphics[width=0.7\textwidth]{data/Aufbau.jpg}
+  \caption{Aufbau zur Messung der magnetischen Suszeptibilität. \cite{anleitung}}  
+  \label{fig:Bild1}
 \end{figure}
 
-\section{Bestimmung des $\lambda$-Punktes}
 
-\section{Energiebetrachtung}
+An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdme befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
+
+$$U_{total}(T) = U_{leer} + U_{Probe}(T)$$
+
+Sie ist proportional zur magnetischen Suszeptibilität der Probe. In einem Lock-In-Verstärker wird die Spannung $U_{total}(T)$ mittels der Referenzspannung moduliert, was in einer Gleichspannung resultiert, die wir messen. Später erfolgt eine Temperatur-Kalibration. Im oberen Teil des heliumgefüllten Dewargefäßes ist außerdem ein Druckmessgerät angeschlossen.
+
+Zuerst muss der Kryostat befüllt werden. Nachdem das äußere Dewargefäß mit flüssigem Stickstoff befüllt worden ist, kann Helium in den Probenraum übergehoben werden. Da wir nach dem Prinzip der Verdampfungskühlung arbeiten, muss im Folgenden Helium aus dem inneren Dewargefäß in die Helium-Rückleitung abgepumpt werden, um hinreichend tiefe Temperaturen zu erreichen. Dazu steht uns eine Drehschieber-Vakuumpumpe zur Verfügung, deren Saugleistung über ein grobes und ein feines Regelventil gedrosselt werden kann. 
+
+\section{Aufnahme der Abkühlkurve}
+
+Zunächst nehmen wir die Spannungswerte für den Abkühlvorgang auf. Dazu öffnen wir schrittweise die Regelventile der Vakuumpumpe und senken damit den Druck und somit die Temperatur. Durch gleichzeitiges Ablesen der Spannung nehmen wir 20 Wertepaare zwischen 744 Torr und 4 Torr auf, was Temperaturen zwischen 4,2 K und 1,5 K entspricht.
+
+\section{Aufnahme der Aufwärmkurve}
+
+Anschließend werden die Regelventile geschlossen und die Drehschieberpumpe abgestellt. Durch die Erwärmung des Heliums erfolgt ein Druckanstieg, wobei wir wieder die Spannung ablesen und auf diese Weise 31 Wertepaare von 4 Torr bis 220 Torr aufnehmen.
+
+\chapter{Auswertung}
+
+\section{Druckkorrektur}
+
+Da der Druck nicht direkt am Probenort gemessen wird, sondern an der Oberfläche des Heliumbehälters, muss die Druckdifferenz betrachtet werden, die durch das Gewicht der Heliumsäule oberhalb der Probe entsteht. Der Druck am Probenort berechnet sich wie folgt: 
+$$p_{Probe} = p_{oben} + p_{He} = p_{oben} + \rho_{He} h g$$
+mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145 ~ \frac{g}{cm^3}$. Da am Kryostaten eine Skala angebracht ist, deren Nullpunkt am Probenort liegt, kann die Höhe direkt abgelesen werden. Beim Abkühlvorgang wurde die Höhe dreimal abgelesen und zweimal (zu Beginn und zum Ende) beim Aufwärmen. In folgender Tabelle sind die gemessenen Füllhöhen sowie die Korrekturwerte inkl. der sich dadurch ergebenden Temperaturkorrekturen aufgelistet:
+
+\begin{center}
+  \begin{tabular}{|p{1.6cm}|p{2.4cm}|p{1.6cm}|p{2cm}|p{2.4cm}|p{2cm}|p{2cm}|}
+    \hline
+    T in K & $p_{oben}$ in Torr & h in cm & $\Delta p$ in Torr & $p_{Probe}$ in Torr & $\Delta T$ in K & $T_{Probe}$ in K \\ \hline
+    4,2 & 744 & 22,2 & 2,369 & 746,369 &  &   \\ \hline
+    2,27 & 47 & 13,5 & 1,440 & 48,440 &  &    \\ \hline
+    1,5 & 4 & 10,8 & 1,152 & 5,152 &  &    \\ \hline
+     & 220 & 10,6 & 1,131 & 221,131 &  &    \\ \hline
+	\end{tabular}
+\end{center}
+
+\section{Überprüfung des Curie- und Curie-Weiss-Gesetzes}
+
+\section{Verlauf der Aufwärmung}
+
+\section{Wärmefluss in das Helium}
 
 \chapter{Fazit}
-
 
 %ENDE INHALT
 \cleardoublepage{}
 % Eintrag fürs Inhaltsverzeichnis
 \newpage
 \begin{thebibliography}{100}
-  \bibitem{anleitung} Versuchsanleitung zum Versuch Tieftemperatur Messung an Suprafluidem Helium, heruntergeladen am 05.06.2015 von der Homepage des IAP der TU Darmstadt
+  \bibitem{anleitung} Versuchsanleitung zum Versuch Tieftemperaturmessung, heruntergeladen am 09.06.2015 von der Homepage der TU Darmstadt
+  \bibitem{blackbodycoherence} The coherence length of black-body
+radiation by Axel Donges, 1998: \url{http://hank.uoregon.edu/teaching-modules/Broadband-Interferometer/BBcoherence.pdf}
+  \bibitem{boltzmann} Abteilung theoretische Chemie der Goethe-Universität
+    Frankfurt von Prof. J. Wachtveitl: \url{http://www.theochem.uni-frankfurt.de/femtochem/lectures/PC2_Sem/Handouts-PCII-WS-12-13/Zotko_Maxwell-Boltzmann%20Verteilung.pdf}
 \end{thebibliography}
 \end{document}
 
