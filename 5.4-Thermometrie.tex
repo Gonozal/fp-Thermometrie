@@ -25,7 +25,7 @@
 \pgfkeys{%
   /pgfplots/default/.style={%
     /pgf/number format/use comma,
-    legend pos=north west,
+    legend pos=north east,
     width=0.9\linewidth,
     height=0.7\linewidth,
     scale only axis,
@@ -207,7 +207,63 @@ mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145
 \end{center}
 
 \section{Überprüfung des Curie- und Curie-Weiss-Gesetzes}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+  default,
+  title={Kalibration des sekundären Thermometers},
+  xlabel=$T$ in $K$,
+  ylabel=$U_{ind}$ in $mV$,
+  xmin=1.4,
+  xmax=4.4,
+  ymin=0,
+  ymax=370,
+  height=0.5\linewidth
+]
+\addplot[
+  red, only marks, mark=+, mark size=1pt, error bars/.cd, 
+  y dir=both, y explicit, x dir=both, x fixed relative=0.005
+] table[x index=0, y index=1, y error index=2] {data/abkuehlen.txt};
+\addlegendentry{Messpunkte}
+\addplot[teal, mark=x, mark size=0pt, samples=40, domain=1.4:4.4] {-151.706+753.243/x};
+\addlegendentry{Curie-Fit}
+\addplot[orange, mark=x, mark size=0pt, samples=40, domain=1.4:4.4] {-155.706+769.835/(0.0247+x)};
+\addlegendentry{Curie-Weiss-Fit}
+\end{axis}
+\end{tikzpicture}
+    \caption{Induzierte Spannung in Abhängigkeit der Temperatur. Die Spannung
+        ist Proportional zur Magnetisierung und somit auch zur Suszeptibilität des
+        Paramagneten. Sowohl der Curie als auch der Curie-Weiss fit stimmen sehr gut
+        mit den gemessenen Daten überin. Lediglich an den rändern des Graphen ist
+        optisch ein Unterschied der beiden Fits zu bemerken, im Bereich höherer
+        Temperaturen scheint sogar der Curie-Fit eher mit den Messdaten überein zu stimmen}
+\end{figure}
 
+
+\subsection{Fitwerte}
+Für den Curie-Fit gehen wir von einer Funktion der Form $\chi(T) \propto U_{ind}(T)
+= \frac{C}{T} + U_0$ aus.
+Es ergeben sich folgende Fit-Werte
+\begin{center}
+  \begin{tabular}{l|llll}
+    \text{} & Wert     & Standardabweichung & t-Statistik & P-Wert             \\ \hline
+    $C  $   & 753,243  & 5,35434            & 140,679     & $1,9388 \cdot 10^{-31}$ \\
+    $U_0$   & -151,706 & 2,43924            & -62,1941    & $2,2906 \cdot 10^{-24}$ \\
+  \end{tabular}
+\end{center}
+
+
+Für den Curie-Weiss-Fit gehen wir von einer Funktion der Form $\chi(T) \propto
+U_{ind}(T) = \frac{C}{T-\theta} + U_0$ aus.
+Es ergeben sich folgende Fit-Werte
+\begin{center}
+  \begin{tabular}{l|llll}
+             & Wert       & Standardabweichung & t-Statistik & P-Wert             \\ \hline
+    $C     $ & 769,835    & 44,7269            & 17,2119     & $4,7859 \cdot 10^{-13}$ \\
+    $U_0   $ & -155,027   & 9,18241            & -16,8831    & $6,7582 \cdot 10^{-13}$    \\
+    $\theta$ & -0,0246869 & 0,0657462          & -0,375489   & 0,711456           \\
+  \end{tabular}
+\end{center}
 \section{Verlauf der Aufwärmung}
 
 \section{Wärmefluss in das Helium}
