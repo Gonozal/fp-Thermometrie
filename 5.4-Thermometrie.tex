@@ -168,7 +168,7 @@ Da $^3$He im Vergleich zu $^4$He sehr selten ist, reicht es im Prinzip aus, die 
 
 \begin{figure}[h] 
   \centering
-     \includegraphics[width=0.7\textwidth]{data/lambda.jpg}
+     \includegraphics[width=0.4\textwidth]{data/lambda.jpg}
   \caption{Spezifische Wärmekapazität von $^4$He über der Temperatur. \cite{wiki}}  
   \label{fig:Bild1}
 \end{figure}
@@ -192,15 +192,17 @@ Der verwendete Badkryostat besteht aus einem äußeren Dewargefäß, welches zur
 
 \begin{figure}[h] 
   \centering
-     \includegraphics[width=0.7\textwidth]{data/Aufbau.jpg}
+     \includegraphics[width=0.4\textwidth]{data/Aufbau.jpg}
   \caption{Aufbau zur Messung der magnetischen Suszeptibilität. \cite{anleitung}}  
   \label{fig:Bild1}
 \end{figure}
 
 
 An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdme befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
+\begin{center}
+    $U_{total}(T) = U_{leer} + U_{Probe}(T)$
+\end{center}
 
-$$U_{total}(T) = U_{leer} + U_{Probe}(T)$$
 
 Sie ist proportional zur magnetischen Suszeptibilität der Probe. In einem Lock-In-Verstärker wird die Spannung $U_{total}(T)$ mittels der Referenzspannung moduliert, was in einer Gleichspannung resultiert, die wir messen. Später erfolgt eine Temperatur-Kalibration. Im oberen Teil des heliumgefüllten Dewargefäßes ist außerdem ein Druckmessgerät angeschlossen.
 
@@ -226,10 +228,10 @@ mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145
   \begin{tabular}{|p{1.6cm}|p{2.4cm}|p{1.6cm}|p{2cm}|p{2.4cm}|p{2cm}|p{2cm}|}
     \hline
     T in K & $p_{oben}$ in Torr & h in cm & $\Delta p$ in Torr & $p_{Probe}$ in Torr & $\Delta T$ in K & $T_{Probe}$ in K \\ \hline
-    4,2 & 744 & 22,2 & 2,369 & 746,369 &  &   \\ \hline
-    2,27 & 47 & 13,5 & 1,440 & 48,440 &  &    \\ \hline
-    1,5 & 4 & 10,8 & 1,152 & 5,152 &  &    \\ \hline
-     & 220 & 10,6 & 1,131 & 221,131 &  &    \\ \hline
+    4,2    & 744                & 22,2    & 2,369              & 746,369             &                 &                  \\ \hline
+    2,27   & 47                 & 13,5    & 1,440              & 48,440              &                 &                  \\ \hline
+    1,5    & 4                  & 10,8    & 1,152              & 5,152               &                 &                  \\ \hline
+           & 220                & 10,6    & 1,131              & 221,131             &                 &                  \\ \hline
 	\end{tabular}
 \end{center}
 
@@ -266,14 +268,23 @@ mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145
         Temperaturen scheint sogar der Curie-Fit eher mit den Messdaten überein zu stimmen}
 \end{figure}
 
+Auf Grund der Ähnlichkeit des Curie- und des Curie-Weiss Fits und der Tatsache,
+dass die Standardabweichungen im Curie-Fit deutlich geringer sind, entscheiden wir
+uns für die Curie-Gleichung zur Kalibrierung des sekundären
+Thermometers. Umgestellt nach T ergibt sich somit:
+$$T(U_{ind}) = \frac{C}{U_{ind}-U_0}$$ 
 
-\subsection{Fitwerte}
+Einsetzen der Fit Paramter liefert:
+$$T(U_{ind}) = \frac{753,24}{U_{ind}+151,71}$$ 
+
+
+\subsection{Fit Parameter}
 Für den Curie-Fit gehen wir von einer Funktion der Form $\chi(T) \propto U_{ind}(T)
 = \frac{C}{T} + U_0$ aus.
 Es ergeben sich folgende Fit-Werte
 \begin{center}
   \begin{tabular}{l|llll}
-    \text{} & Wert     & Standardabweichung & t-Statistik & P-Wert             \\ \hline
+    \text{} & Wert     & Standardabweichung & t-Statistik & P-Wert                  \\ \hline
     $C  $   & 753,243  & 5,35434            & 140,679     & $1,9388 \cdot 10^{-31}$ \\
     $U_0$   & -151,706 & 2,43924            & -62,1941    & $2,2906 \cdot 10^{-24}$ \\
   \end{tabular}
@@ -285,13 +296,51 @@ U_{ind}(T) = \frac{C}{T-\theta} + U_0$ aus.
 Es ergeben sich folgende Fit-Werte
 \begin{center}
   \begin{tabular}{l|llll}
-             & Wert       & Standardabweichung & t-Statistik & P-Wert             \\ \hline
+             & Wert       & Standardabweichung & t-Statistik & P-Wert                  \\ \hline
     $C     $ & 769,835    & 44,7269            & 17,2119     & $4,7859 \cdot 10^{-13}$ \\
-    $U_0   $ & -155,027   & 9,18241            & -16,8831    & $6,7582 \cdot 10^{-13}$    \\
-    $\theta$ & -0,0246869 & 0,0657462          & -0,375489   & 0,711456           \\
+    $U_0   $ & -155,027   & 9,18241            & -16,8831    & $6,7582 \cdot 10^{-13}$ \\
+    $\theta$ & -0,0246869 & 0,0657462          & -0,375489   & 0,711456                \\
   \end{tabular}
 \end{center}
+
 \section{Verlauf der Aufwärmung}
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+  default,
+  legend pos=north west,
+  title={Temperatur- und Druckverlauf beim Aufwärmen},
+  xlabel=$T$ in $K$,
+  ylabel=$\rho$ in $Torr$,
+  xmin=1.5,
+  xmax=2.3,
+  ymin=0,
+  ymax=230,
+  height=0.5\linewidth
+]
+\addplot[
+  red, only marks, mark=+, mark size=1pt, error bars/.cd, 
+  y dir=both, y fixed=0.5, x dir=both, x explicit
+] table[
+  x expr=753.24/(\thisrowno{1}+151.71), y index=0, 
+  x error expr=((5.35/(\thisrowno{1}+151.71))^2+(5.95)(753.24/(\thisrowno{1}+151.71)^2)^2)^0.5
+] {data/aufwaermen.txt};
+\addlegendentry{Messpunkte}
+\addplot[blue, mark=x, mark size=0pt, samples=4, domain=1.4:2.3] {-79.276+51.9875*x};
+\addplot[blue, mark=x, mark size=0pt, samples=4, domain=1.4:2.3] {-5150.69+2387.87*x};
+\addlegendentry{Fitgeraden}
+\end{axis}
+\end{tikzpicture}
+    \caption{Druck in Abhägngikeit der Temperatur beim Aufwärmen des
+      Heliums. Sowohl vor als auch nach dem optisch ermittelten Lambdapunkt
+      wurden Fitgeraden durch die Messwerte gelegt. Der Schnittpunkt der Geraden
+      bezeichnet den ermittelten Wert für den Lambda-Punkt.}
+\end{figure}
+
+Durch fitten von Geraden durch die Messwerte vor und nach dem Knick in der
+Steigung der Messwerte lässt sich ein experimenteller Wert für den Lambda-Punkt
+ermitteln. In unserem Fall liegt dieser bei $T_{\lambda}=2,17109K$, was einer
+Abweichung von $0,0057K$ bzw.\ $0,26\%$ vom Literaturwert von $2,1768K$ entspricht.
 
 \section{Wärmefluss in das Helium}
 
