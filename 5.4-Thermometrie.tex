@@ -145,19 +145,46 @@ In diesem Versuch geht es um Temperaturmessung im Bereich von etwa 1 bis 5 K. Di
 
 \section{Kühlverfahren zum Erreichen der Suprafluidität}
 
+Es gibt verschiedene Kühlverfahren, mit denen es möglich ist, sehr tiefe Temperaturen zu erzeugen. Man kann beispielsweise den Joule-Thomson-Effekt nutzen, d.h. die Abkühlung von Gasen bei Expansion, sofern dies unterhalb der jeweiligen Inversionstemperatur geschieht (bei Helium 43 K). Auch die adiabatische Entmagnetisierung ist eine Möglichkeit der Kühlung, bei der die Entropie eines ungeordneten Spinsystems durch Anlegen eines äußeren Magnetfeldes erniedrigt wird und somit Wärme an ein äußeres Wärmebad abgegeben wird. Zusätzlich kann eine Kernentmagnetisierung erfolgen, mit der eine Kühlung bis hinab in den Mikrokelvinbereich möglich ist. Für uns von Beudeutung ist jedoch vor allem die Verdampfungskühlung, da diese im Versuch verwendet wird. Dabei wird das Helium, welches im Kryostaten verdampft, oben abgesaugt, wodurch der Druck vermindert wird. Dadurch gehen Teilchen, welche eine höhere kinetische Energie als der Mittelwert besitzen, aus der Flüssigkeit in Dampf über. Durch Abpumpen dieser Teilchen verringert man nun die mittlere kinetische Energie des Systems, was in einer Erniedrigung der Temperatur resultiert. Durch diese Art der Kühlung lässt sich in einem $^4$He-Bad eine Temperatur von etwa 0,8 K aufrechterhalten. 
+
 \section{Thermometrie bei tiefen Temperaturen}
+
+Man unterscheidet bei den Thermometern grundsätzlich zwischen primären und sekundären Thermometern. Primäre sind solche, an denen man die Temperatur ohne Kalibrierung direkt ablesen kann. Sekundäre Thermometer müssen erst an primären kalibriert werden, wobei wir die Kalibrierung mittels der ITS-90 (Internationale Temperaturskala) und ihrer 17 Fixpunkte sowie der Dampfdruckkurve von $^4$He vornehmen. Das Thermometer muss eine Substanz sein, die temperaturabhängig charakteristische Eigenschaften verändert. Neben Thermoelementen, Dioden, die ihre Kennlinie temperaturabhängig verändern, Widerständen und Kapazitäten sind zum Beispiel die im Versuch verwendeten Paramagneten geeignet, da die Magnetisierung neben des äußeren Magnetfeldes auch von der Temperatur abhängt. Die Grundlagen dieser Abhängigkeit werden im folgenden Abschnitt beleuchtet.
 
 \section{Paramagnetismus}
 
-%Herleitung Curie ideal:
-Wir betrachten einen idealen Paramagneten mit N magnetischen Momenten. Diese sind gegeben durch $\vec{\mu} = -g_j \mu_B \vec{J}$, wobei $g_J$ der gyromagnetische Faktor ist, $\mu_B$ das Bohrsche Magneton und $\vec{J}$ der Gesamtdrehimpuls. Im äußeren Magnetfeld gibt es nur zwei Zustände, und zwar die parallele oder die antiparallele Ausrichtung der magnetischen Momente. Deren Energie ist
+Wir betrachten einen idealen Paramagneten mit N magnetischen Momenten, wobei wir zunächst die Wechselwirkung zwischen den magnetischen Momenten vernachlässigen. Diese sind gegeben durch $\vec{\mu} = -g_j \mu_B \vec{J}$, wobei $g_J$ der gyromagnetische Faktor ist, $\mu_B$ das Bohrsche Magneton und $\vec{J}$ der Gesamtdrehimpuls. Im äußeren Magnetfeld gibt es nur zwei Zustände, und zwar die parallele oder die antiparallele Ausrichtung der magnetischen Momente. Deren Energie ist
 $$E_{\pm} = \mp \vec{\mu} \cdot \vec{B} = \pm g_j \mu_B \vec{J} \cdot \vec{B}.$$
 Die Boltzmann-Statistik liefert uns die Besetzungszahlen der Zustände als $N_{\pm} = N \frac{e^{\pm z}}{e^z + e^{-z}}$, wobei hier $\frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T} =: z$ substituiert wurde. Die gesamte Magnetisierung des Paramagneten ist dann gegeben durch 
 $$M = |\vec{\mu}| (N_+ - N_-) = N |\vec{\mu}| \frac{e^z - e^{-z}}{e^z + e^{-z}} = N |\vec{\mu}| tanh(z) ,$$ was sich für $z \ll 1$ nähern lässt zu $tanh(z) \approx z$ und somit 
 $$M = N |\vec{\mu}| \frac{g_j \mu_B \vec{J} \cdot \vec{B}}{k_B T}.$$
 Die magnetische Suszeptibilität ist definiert als $\chi = \frac{\partial M}{\partial B}$, wodurch sich nach Anwendung auf unseren Ausdruck für $M$ gerade $\chi = \frac{C}{T}$ mit einer Konstanten $C$ ergibt. Dies ist das Curie-Gesetz und $C$ ist die Curie-Konstante.
 
+Berücksichtigt man zusätzlich die Wechselwirkung zwischen den magnetischen Momenten, ist es sinnvoll einen Mean-Field-Ansatz zu machen, d.h. eine Näherung aus der statistischen Physik, bei der vernachlässigt wird, dass jedes Teilchen durch sein Verhalten das Feld lokal verändert. Man erhält daraus das Curie-Weiss-Gesetz $\chi = \frac{C}{T- \Sigma}$ mit der Curie-Temperatur $\Sigma = \alpha C$.
+
 \section{Eigenschaften von $^3$He und $^4$He}
+
+Da $^3$He im Vergleich zu $^4$He sehr selten ist, reicht es im Prinzip aus, die Eigenschaften von $^4$He zu betrachten, da diese auf das verwendete Helium zutreffen werden. Zudem ist der Lambdapunkt von $^3$He viel geringer und wird im Versuch nicht erreicht. Wichtig ist für uns der Lambdapunkt von $^4$He, welcher bei etwa 2,2 K liegt. Direkt unterhalb dieses Punktes geht die Wärmekapazität gegen Unendlich und verläuft in Form eines $\lambda$-Zeichens, woher auch der Name resultiert. Dies ist in folgender Grafik veranschaulicht: 
+
+\begin{figure}[h] 
+  \centering
+     \includegraphics[width=0.7\textwidth]{data/lambda.jpg}
+  \caption{Spezifische Wärmekapazität von $^4$He über der Temperatur. \cite{wiki}}  
+  \label{fig:Bild1}
+\end{figure}
+
+Zudem erhöht sich die Wärmeleitfähigkeit im suprafluidem Zustand sehr stark, was das visuelle Erkennen des Lambdapunktes möglich macht, da durch die hohe Wärmeleitfähigkeit das Sieden an der Oberfläche beendet wird und die Oberfläche ruhig wird. Die wichtigsten Eigenschaften der beiden Isotope sind in folgender Tabelle aufgelistet: 
+
+\begin{center}
+  \begin{tabular}{|p{5cm}|p{3cm}|p{3cm}|}
+    \hline
+    & $^3$He & $^4$He \\ \hline
+    Teilchenart & Fermion & Boson  \\ \hline
+    Spin & 1/2 & 1  \\ \hline
+    Lambdapunkt & 0,0025 K & 2,1768 K  \\ \hline
+    Siedepunkt bei 1 bar & 3,19 K & 4,21 K  \\ \hline
+	\end{tabular}
+\end{center}
 
 \chapter{Aufbau und Durchführung}
 
@@ -220,10 +247,8 @@ mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145
 \newpage
 \begin{thebibliography}{100}
   \bibitem{anleitung} Versuchsanleitung zum Versuch Tieftemperaturmessung, heruntergeladen am 09.06.2015 von der Homepage der TU Darmstadt
-  \bibitem{blackbodycoherence} The coherence length of black-body
-radiation by Axel Donges, 1998: \url{http://hank.uoregon.edu/teaching-modules/Broadband-Interferometer/BBcoherence.pdf}
-  \bibitem{boltzmann} Abteilung theoretische Chemie der Goethe-Universität
-    Frankfurt von Prof. J. Wachtveitl: \url{http://www.theochem.uni-frankfurt.de/femtochem/lectures/PC2_Sem/Handouts-PCII-WS-12-13/Zotko_Maxwell-Boltzmann%20Verteilung.pdf}
+  \bibitem{wiki} Grafik aus dem Artikel Lambda point aus Wikipedia, der freien Enzyklopädie am 21.6.2015 \url{https://upload.wikimedia.org/wikipedia/commons/7/7b/Lambda_transition.svg}
+  
 \end{thebibliography}
 \end{document}
 
