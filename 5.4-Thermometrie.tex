@@ -225,17 +225,25 @@ $$p_{Probe} = p_{oben} + p_{He} = p_{oben} + \rho_{He} h g$$
 mit der Füllhöhe h des flüssigen Heliums und dessen Dichte $\rho_{He} = 0,145 ~ \frac{g}{cm^3}$. Da am Kryostaten eine Skala angebracht ist, deren Nullpunkt am Probenort liegt, kann die Höhe direkt abgelesen werden. Beim Abkühlvorgang wurde die Höhe dreimal abgelesen und zweimal (zu Beginn und zum Ende) beim Aufwärmen. In folgender Tabelle sind die gemessenen Füllhöhen sowie die Korrekturwerte inkl. der sich dadurch ergebenden Temperaturkorrekturen aufgelistet:
 
 \begin{center}
-  \begin{tabular}{|p{1.6cm}|p{2.4cm}|p{1.6cm}|p{2cm}|p{2.4cm}|p{2cm}|p{2cm}|}
-    \hline
-    T in K & $p_{oben}$ in Torr & h in cm & $\Delta p$ in Torr & $p_{Probe}$ in Torr & $\Delta T$ in K & $T_{Probe}$ in K \\ \hline
-    4,2    & 744                & 22,2    & 2,369              & 746,369             &                 &                  \\ \hline
-    2,27   & 47                 & 13,5    & 1,440              & 48,440              &                 &                  \\ \hline
-    1,5    & 4                  & 10,8    & 1,152              & 5,152               &                 &                  \\ \hline
-           & 220                & 10,6    & 1,131              & 221,131             &                 &                  \\ \hline
+  \begin{tabular}{p{1.6cm}|p{2.4cm}|p{1.6cm}|p{2cm}|p{2.4cm}|p{2cm}}
+    T in K & $p_{oben}$ in Torr & h in cm & $\Delta p$ in Torr & $p_{Probe}$ in Torr & $\Delta T$ in K  \\ \hline
+    4,2    & 744                & 22,2    & 2,369              & 746,369             & 0.0029           \\ \hline
+    2,27   & 47                 & 13,5    & 1,440              & 48,440              & 0.00025          \\ \hline
+    1,5    & 4                  & 10,8    & 1,152              & 5,152               & 0.00028          \\
 	\end{tabular}
 \end{center}
 
 \section{Überprüfung des Curie- und Curie-Weiss-Gesetzes}
+Zur Kalibrierung des sekundären Thermometers, welches im Prinzip aus einer
+Induktionsspule mit einem Paramagneten als Kern besteht, haben wir die in der
+Spule induzierte Spannung in Abhängigkeit des Dampfdruckes des Heliums
+aufgenommen. Das Helium wurde durch Abpumpen von Heliumgas aus dem Probenraum
+abgekühlt. Da der Prozess entlang der Dampfdruckkurve des Heliums abläuft, kann
+diese zur direkten Bestimmung der Temperatur und so zur Kalibrierung des
+sekundären Thermometers benutzt werden.
+
+An hand der aufgenommenen Daten kann zudem überprüft werden, ob die Suszeptibilität
+des verwendete Paramagneten dem Curie- oder Curie-Weiss-Gesetz folgt.
 \begin{figure}[H]
 \begin{tikzpicture}
 \begin{axis}[
@@ -275,7 +283,7 @@ Thermometers. Umgestellt nach T ergibt sich somit:
 $$T(U_{ind}) = \frac{C}{U_{ind}-U_0}$$ 
 
 Einsetzen der Fit Paramter liefert:
-$$T(U_{ind}) = \frac{753,24}{U_{ind}+151,71}$$ 
+$$T(U_{ind}) = \frac{753,24mV \cdot K}{U_{ind}+151,71mV}$$ 
 
 
 \subsection{Fit Parameter}
@@ -339,13 +347,78 @@ Es ergeben sich folgende Fit-Werte
 
 Durch fitten von Geraden durch die Messwerte vor und nach dem Knick in der
 Steigung der Messwerte lässt sich ein experimenteller Wert für den Lambda-Punkt
-ermitteln. In unserem Fall liegt dieser bei $T_{\lambda}=2,17109K$, was einer
-Abweichung von $0,0057K$ bzw.\ $0,26\%$ vom Literaturwert von $2,1768K$ entspricht.
+ermitteln. In unserem Fall liegt dieser bei 
+$$T_{\lambda}=2,17109K$$
+was einer Abweichung von $0,0057K$ bzw.\ $0,26\%$ vom Literaturwert von
+$2,1768K$ entspricht.
 
+Die geringe Abweichung vom Literaturwert lässt darauf schließen, dass die
+Kalibrierung des sekundären Thermometers sehr gut gelungen ist.
+
+\subsection{Fit Parameter}
+Beide Geraden wurden nach der Formel $f(x) = a \cdot x + b$ gefittet.
+\begin{center}
+  \begin{tabular}{l|llll}
+      & Wert & Standardabweichung & t-Statistik & P-Wert                \\ \hline
+    a & 51,9875  & 2.52496        & 20,5895     & $2,070 \cdot 10^{-12}$ \\
+    b & -79,276  & 4.84489        & -16,3628    & $5,654 \cdot 10^{-11}$ \\
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  \begin{tabular}{l|llll}
+      & Wert     & Standardabweichung & t-Statistik & P-Wert                 \\ \hline
+    a & 2387,87  & 140,675            & 16,9744     & $9,378 \cdot 10^{-10}$ \\
+    b & -5150,69 & 309,992            & -16,6156    & $1,200 \cdot 10^{-9}$  \\
+  \end{tabular}
+\end{center}
 \section{Wärmefluss in das Helium}
+Die benötigte zugeführte Wärmeenergie $dQ$ bei einer Temperaturänderung $dT$
+ergibt sich mit:
+$$dQ = m \cdot c_{He} \cdot dT$$
+
+Da während des Aufwärmprozesses allerdings Helium verdampft ist, muss der
+Ausdruck für die Wärmeenergie noch um die Verdampfungswärme ergänzt werden. Man
+erhält
+
+$$Q = m \cdot \int_{T_0}^{T_1}dT c_{He}(T) + Q_v \cdot N$$
+mit der molaren Verdampfungswärme $Q_v$ und der Anzahl der Mols $N =
+\frac{m}{m_{mol}} = \frac{\pi r^2 \rho_{He}\cdot \Delta h}{m_{mol}}$.
+
+Der Höhenunterschied $\Delta h$zwischen Beginn und Ende des Aufwärmvorgangs
+beträgt in unserem fall $2 cm$. Damit ergibt sich eine Verdampfungswärme von 
+
+$$Q_V = 0,364 Mol \cdot 93\frac{J}{Mol} = 33,7J$$
+
+Zur korrekten Bestimmung von $Q$ müsste das Integral $\int_{T_0}^{T_1}dT
+c_{He}(T)$ bestimmt werden, wozu eine Funtkion für $c(T)$ bekannt sein
+müsste. Uns liegen jedoch lediglich diskrete Werte für $c(T)$ vor, weswegen wir die
+deponierte Wärmemenge linear für jeweils 2 benachtbarte Messpunkte interpolieren
+und aufaddieren:
+
+$$Q_T = m \cdot \sum \limits_{i=2}^n \frac{C(T_n) + C(T_{n-1})}{2} \cdot (T_n -
+  T_{n-1}) = m \cdot 0,716 \frac{J}{kg} = 55,84 J$$
+
+Insgesamt ergibt sich also 
+$$Q = Q_T + Q_V = 89,54J$$
+
+Theoretisch ergibt sich alleine für die Wärmeaufnahme während der 6490 Sekunden
+dauernden Aufwärmphase des Heliums durch Wärmestrahlung des Stickstoffes
+
+$$Q_S = \sigma T^4 A \cdot \Delta t = 416,1J$$
+
+Wobei die vom Helium ausgesandte Strahlung auf Grund der Abhängigkeit von $T^4$
+vernachlässigt wurde.
+
+Tatsächlich erreicht ein großer Teil dieser Strahlung das Helium allerdings auf
+Grund des verspiegelten Dewar-Gefäßes nicht.
 
 \chapter{Fazit}
-
+In diesem Versuch konnten wir mit Hilfe eines Badkryostaten an Hand der
+Dampfdruckkurve des abkühlenden Heliums ein sekundäres Thermometer kalibrieren. Dieses haben
+wir anschließend während der Aufwärmphase des Heliums erfolgreich zur Bestimmung
+der Temperatur benutzen könen. Dadurch ist es uns gelungen, den
+Lambda-Punkt von Helium mit erstaunlicher Genauigkeit zu bestimmen.
 %ENDE INHALT
 \cleardoublepage{}
 % Eintrag fürs Inhaltsverzeichnis
