@@ -198,13 +198,13 @@ Der verwendete Badkryostat besteht aus einem äußeren Dewargefäß, welches zur
 \end{figure}
 
 
-An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdme befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
+An der Primärspule liegt eine Referenz-Wechselspannung an, die in den astatisch gewickelten Sekundärspulen Spannungen induzieren, die sich ohne Probe im Idealfall gerade aufheben sollten. Tatsächlich tritt aber immer ein Leersignal auf, außerdem befindet sich die Probe in einer der Sekundärspulen. D.h. die gemessene Spannung besteht aus zwei Anteilen: 
 \begin{center}
     $U_{total}(T) = U_{leer} + U_{Probe}(T)$
 \end{center}
 
 
-Sie ist proportional zur magnetischen Suszeptibilität der Probe. In einem Lock-In-Verstärker wird die Spannung $U_{total}(T)$ mittels der Referenzspannung moduliert, was in einer Gleichspannung resultiert, die wir messen. Später erfolgt eine Temperatur-Kalibration. Im oberen Teil des heliumgefüllten Dewargefäßes ist außerdem ein Druckmessgerät angeschlossen.
+Sie ist proportional zur magnetischen Suszeptibilität der Probe. Ein Lock-In-Verstärker berechnet die Kreuzkorrelation zwischen dem Mess- und dem Referenzsignal und liefert im Idealfall eine Gleichspannung, die proportional zur Eingangsspannung und zum Kosinus der Phasenverschiebung zwischen Mess- und Referenzsignal ist. Später erfolgt eine Temperatur-Kalibration. Im oberen Teil des heliumgefüllten Dewargefäßes ist außerdem ein Druckmessgerät angeschlossen.
 
 Zuerst muss der Kryostat befüllt werden. Nachdem das äußere Dewargefäß mit flüssigem Stickstoff befüllt worden ist, kann Helium in den Probenraum übergehoben werden. Da wir nach dem Prinzip der Verdampfungskühlung arbeiten, muss im Folgenden Helium aus dem inneren Dewargefäß in die Helium-Rückleitung abgepumpt werden, um hinreichend tiefe Temperaturen zu erreichen. Dazu steht uns eine Drehschieber-Vakuumpumpe zur Verfügung, deren Saugleistung über ein grobes und ein feines Regelventil gedrosselt werden kann. 
 
@@ -242,7 +242,7 @@ abgekühlt. Da der Prozess entlang der Dampfdruckkurve des Heliums abläuft, kan
 diese zur direkten Bestimmung der Temperatur und so zur Kalibrierung des
 sekundären Thermometers benutzt werden.
 
-An hand der aufgenommenen Daten kann zudem überprüft werden, ob die Suszeptibilität
+Anhand der aufgenommenen Daten kann zudem überprüft werden, ob die Suszeptibilität
 des verwendete Paramagneten dem Curie- oder Curie-Weiss-Gesetz folgt.
 \begin{figure}[H]
 \begin{tikzpicture}
@@ -414,11 +414,93 @@ Tatsächlich erreicht ein großer Teil dieser Strahlung das Helium allerdings au
 Grund des verspiegelten Dewar-Gefäßes nicht.
 
 \chapter{Fazit}
-In diesem Versuch konnten wir mit Hilfe eines Badkryostaten an Hand der
+In diesem Versuch konnten wir mit Hilfe eines Badkryostaten anhand der
 Dampfdruckkurve des abkühlenden Heliums ein sekundäres Thermometer kalibrieren. Dieses haben
 wir anschließend während der Aufwärmphase des Heliums erfolgreich zur Bestimmung
-der Temperatur benutzen könen. Dadurch ist es uns gelungen, den
+der Temperatur benutzen können. Dadurch ist es uns gelungen, den
 Lambda-Punkt von Helium mit erstaunlicher Genauigkeit zu bestimmen.
+
+\chapter{Messdaten}
+
+Im Folgenden sind die Original-Messdaten aufgelistet; die Helium-Füllhöhe betrug zu Beginn der Messung 22,2 cm, bei 47 Torr 13,5 cm, beim Lambda-Punkt 13 cm und gegen Ende der Abkühlung 10,8 cm. Im Verlauf der Aufwärmung (etwa 1,5 Std.) hat sich der Füllstand lediglich von 10,8 cm auf 10,6 verringert.
+
+ \begin{center}
+ \begin{table}[H]
+ \caption{Daten des Abkühlvorgangs}
+  \begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    T in K & 	U in mV &  dU in mV &  P in Torr  &  dP in Torr \\ \hline
+1.5	&      345	&        1  &           4  &          0.5 \\ \hline
+1.55	&   329.7  	&    1      &       5       &     0.5 \\ \hline
+1.61	&    318.4  	&    1      &       6       &     0.5 \\ \hline
+1.67	&    300.2  	&    1      &       8      &      0.5 \\ \hline
+1.73	&    286.3  	&    1      &       10     &      0.5 \\ \hline
+1.81	&    267.9  	&    1      &       13     &      0.5 \\ \hline
+1.88	&    253.7  	&    1      &       16     &      0.5 \\ \hline
+1.97	&    235.3  	&    1      &       21     &      0.5 \\ \hline
+2.06	&    216.3  	&    1      &       28     &      0.5 \\ \hline
+2.16	&    199.2  	&    1      &       36     &      0.5 \\ \hline
+2.27	&    178.1  	&    1      &       47     &      0.5 \\ \hline
+2.39	&    160.9  	&    1      &       61     &      0.5 \\ \hline
+2.53	&    137.5  	&    1      &      81      &     0.5 \\ \hline
+2.68	&    128.0      &    1      &       104    &      0.5 \\ \hline
+2.85	&    111.9	&      1    &         143  &        0.5 \\ \hline
+3.05	&    93.1	&      1    &         194  &        0.5 \\ \hline
+3.27	&    77.7	&      2     &        264  &        0.5 \\ \hline
+3.53	&    62.6	&      2     &        366  &        5 \\ \hline
+3.67	&    53.3	&      2     &        440  &        5 \\ \hline
+3.84    &    44.7	&      2     &        519  &        5 \\ \hline
+3.98	&    38.7	&      2     &        600  &        5 \\ \hline
+4.2	&      30.7	&      2     &        744  &        5 \\ \hline
+    \end{tabular}
+    \end{center}
+ \label{tab:abkühl}
+ \end{table}  
+\end{center}
+   
+ \begin{center}
+ \begin{table}[H]
+ \caption{Daten des Aufwärmprozesses}
+ \begin{center}
+ \begin{tabular}{|c|c|c|}
+P in Torr &    U in mV &   T in Min:Sec \\ \hline
+4        &     340.3   &  0:00 \\ \hline
+6        &     316.0   &  6:00 \\ \hline
+8        &     297.7   &  12:00 \\ \hline
+10       &     283.5   &  17:35 \\ \hline
+12       &     271.0   &  22:35 \\ \hline
+14       &     260.3   &  22:55 \\ \hline
+16       &     250.8   &  28:30 \\ \hline
+18       &     241.8   &  33:50 \\ \hline 
+20       &     235.7   &  43:50 \\ \hline
+22.2     &     228.2   &  49:40 \\ \hline
+24       &     223.6   &  53:05 \\ \hline
+26       &     218.3   &  57:30 \\ \hline
+28       &     213.3   &  1:02:10 \\ \hline
+30       &     209.2   &  1:06:20 \\ \hline
+32       &     205.2   &  1:10:50 \\ \hline
+34       &     200.9   &  1:15:20 \\ \hline
+36       &     197.6   &  1:19:30 \\ \hline
+38       &     194.3   &  1:24:30 \\ \hline
+45       &     194.0   &  1:25:30 \\ \hline
+50       &     193.6   &  1:26:10 \\ \hline
+60       &     192.0   &  1:27:30 \\ \hline
+70       &     192.6   &  1:28:50 \\ \hline
+80       &     192.4   &  1:30:20 \\ \hline
+90       &     191.9   &  1:31:40 \\ \hline
+100      &     191.7   &  1:33:00 \\ \hline
+120      &     190.5   &  1:35:50 \\ \hline
+140      &     189.5   &  1:38:40 \\ \hline
+160      &     187.6   &  1:41:20 \\ \hline
+180      &     186.0   &  1:45:00 \\ \hline
+200      &     183.9   &  1:46:40 \\ \hline
+220      &     182.4   &  1:49:10 \\ \hline
+  \end{tabular}
+  \end{center}
+ \label{tab:aufwärm}
+ \end{table}  
+\end{center}
+
 %ENDE INHALT
 \cleardoublepage{}
 % Eintrag fürs Inhaltsverzeichnis
