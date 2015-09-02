@@ -10,6 +10,7 @@
 \usepackage[utf8]{inputenc}
 % Wichtiges Paket für Links und verlinktes Inhaltsverzeichnis
 \usepackage{hhline}
+\usepackage{xcolor}
 \usepackage[ngerman]{hyperref}
 % Paket für Fußnoten
 \usepackage[stable]{footmisc}
@@ -242,7 +243,7 @@ abgekühlt. Da der Prozess entlang der Dampfdruckkurve des Heliums abläuft, kan
 diese zur direkten Bestimmung der Temperatur und so zur Kalibrierung des
 sekundären Thermometers benutzt werden.
 
-An hand der aufgenommenen Daten kann zudem überprüft werden, ob die Suszeptibilität
+\textcolor{blue}{Anhand} der aufgenommenen Daten kann zudem überprüft werden, ob die Suszeptibilität
 des verwendete Paramagneten dem Curie- oder Curie-Weiss-Gesetz folgt.
 \begin{figure}[H]
 \begin{tikzpicture}
@@ -277,8 +278,10 @@ des verwendete Paramagneten dem Curie- oder Curie-Weiss-Gesetz folgt.
 \end{figure}
 
 Auf Grund der Ähnlichkeit des Curie- und des Curie-Weiss Fits und der Tatsache,
-dass die Standardabweichungen im Curie-Fit deutlich geringer sind, entscheiden wir
-uns für die Curie-Gleichung zur Kalibrierung des sekundären
+dass \textcolor{blue}{der beim Curie-Weiss Fit hinzugekommene Parameter $\theta$
+eine Unsicherheit hat, die größer als der berechnete Wert ist}, entscheiden wir
+uns uns für \textcolor{blue}{das Modell mit weniger Fit-Parametern, welches in
+  diesem Fall die Curie-Gleichung ist,} zur Kalibrierung des sekundären
 Thermometers. Umgestellt nach T ergibt sich somit:
 $$T(U_{ind}) = \frac{C}{U_{ind}-U_0}$$ 
 
@@ -348,9 +351,15 @@ Es ergeben sich folgende Fit-Werte
 Durch fitten von Geraden durch die Messwerte vor und nach dem Knick in der
 Steigung der Messwerte lässt sich ein experimenteller Wert für den Lambda-Punkt
 ermitteln. In unserem Fall liegt dieser bei 
-$$T_{\lambda}=2,17109K$$
-was einer Abweichung von $0,0057K$ bzw.\ $0,26\%$ vom Literaturwert von
-$2,1768K$ entspricht.
+
+\color{blue}
+
+$$T_{\lambda}=2,171 \pm 0,002K$$
+
+was einer Abweichung von $0,006K$ bzw.\ $0,3\%$ vom Literaturwert von
+$2,177K$ entspricht.
+
+\color{black}
 
 Die geringe Abweichung vom Literaturwert lässt darauf schließen, dass die
 Kalibrierung des sekundären Thermometers sehr gut gelungen ist.
@@ -372,6 +381,28 @@ Beide Geraden wurden nach der Formel $f(x) = a \cdot x + b$ gefittet.
     b & -5150,69 & 309,992            & -16,6156    & $1,200 \cdot 10^{-9}$  \\
   \end{tabular}
 \end{center}
+
+\color{blue}
+Zur Bestimmung der Unsicherheit von $T_{\lambda}$ haben wir eine abschnittsweise
+definierte Funktion 
+$$
+f(x) = \begin{cases}
+ a x+b         & x<k                                                                 \\
+ k (a-c)+b+c x & x\geq k
+\end{cases}
+$$
+mit folgenden Fit-Paremetern verwendet:
+\begin{center}
+  \begin{tabular}{l|llll}
+               & Wert    & Standardabweichung & t-Statistik & P-Wert                 \\ \hline
+    a          & 51,9875 & 11,0935            & 4.6863      & $7,077 \cdot 10^{-5}$  \\
+    b          & -79,276 & 21,2863            & -3.7243     & $9,136 \cdot 10^{-4}$  \\
+    c          & 2387,87 & 95,1628            & 25,0925     & $3,022 \cdot 10^{-20}$ \\
+    k          & 2.17109 & 0.00223            & 971,479     & $6,995 \cdot 10^{-63}$ \\
+  \end{tabular}
+\end{center}
+
+\color{black}
 \section{Wärmefluss in das Helium}
 Die benötigte zugeführte Wärmeenergie $dQ$ bei einer Temperaturänderung $dT$
 ergibt sich mit:
